@@ -14,6 +14,24 @@ package frc.robot;
  */
 public final class Constants {
   public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
+    public static final int iDriverPort = 0;
+  }
+
+  public static class LimitDouble{
+    public static final double limitDouble (double dMinVal, double dValue, double dMaxVal) {
+      double dLimit = Math.max(dValue, dMinVal);
+      return Math.min(dLimit, dMaxVal);
+    }
+  }
+
+  public static class CANids{
+    public static final int iLowRoller = 21;        // Neo
+    public static final int iHighRoller = 22;       // Neo
+    public static final int iElevator = 23;         // Kraken
+    public static final int iFeeder = 24;           // Neo
+    public static final int iShooter = 25;          // Neo
+    public static final int iShooterTilter = 26;    // Neo
+    public static final int iClimbLeft = 27;        // Kraken
+    public static final int iClimbRight = 28;       // Kraken
   }
 }
