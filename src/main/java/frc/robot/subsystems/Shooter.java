@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix6.StatusCode;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
@@ -16,6 +17,8 @@ public class Shooter extends SubsystemBase {
 
   private TalonFX objShooter = new TalonFX(CANids.iShooter, "canivore");
   private StatusCode objStatusCode;
+
+  private final VelocityVoltage velocityRequest = new VelocityVoltage(0.0).withSlot(0);
   /** Creates a new Shooter. */
   public Shooter() {
 
@@ -45,5 +48,7 @@ public class Shooter extends SubsystemBase {
     objShooter.set(dSpeed);
   }
 
-  
+  public void runShooterRPM(double dTargetRPM){
+    objShooter.setControl(velocityRequest.withVelocity(dTargetRPM / 60.0));
+  }
 }
