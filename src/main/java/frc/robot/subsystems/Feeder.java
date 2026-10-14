@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix6.StatusCode;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
@@ -16,6 +17,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Feeder extends SubsystemBase {
   private TalonFX objFeeder = new TalonFX(CANids.iFeeder, "canivore");
   private StatusCode objStatusCode;
+
+  private final VelocityVoltage velocityRequest = new VelocityVoltage(0.0).withSlot(0);
   /** Creates a new Feeder. */
   public Feeder() {
 
@@ -44,5 +47,8 @@ public class Feeder extends SubsystemBase {
   public void runFeeder(double dSpeed){
     objFeeder.set(dSpeed);
   }
-  
+
+  public void runFeederRPM(double dTargetRPM){
+    objFeeder.setControl(velocityRequest.withVelocity(dTargetRPM / 60.0));
+  }
 }
