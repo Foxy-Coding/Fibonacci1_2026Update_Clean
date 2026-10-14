@@ -41,5 +41,8 @@ public class Feeder extends SubsystemBase {
     objFeeder.stopMotor();
   }
 
+  public void runFeeder(double dSpeed){
+    objFeeder.set(dSpeed);
+  }
   
 }
