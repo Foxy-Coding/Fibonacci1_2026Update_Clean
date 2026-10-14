@@ -42,8 +42,16 @@ public class Intake extends SubsystemBase {
     objHighRoller.stopMotor();
   }
 
+
+  // === Low Roller -> Higher speed
+  // === High Roller -> Lower Speed
   public void runIntake(double dSpeedLowRoll, double dSpeedHighRoll){
     objLowRoller.set(dSpeedLowRoll);
     objHighRoller.set(dSpeedHighRoll);
+  }
+
+  public void runIntakeRPM(double dLowPRM, double dHighRPM){
+    objLowRoller.set(dLowPRM);
+    objHighRoller.set(dHighRPM);
   }
 }
